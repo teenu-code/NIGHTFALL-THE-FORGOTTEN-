@@ -1,0 +1,10 @@
+from pathlib import Path
+p=Path("/mnt/data/nightfall_the_forgotten_3d.html")
+s=p.read_text(encoding="utf-8")
+s=s.replace("box('building',x,h/2,z,w,h,d,mats.wall,true);","box('building',x,h/2,z,w,h,d,mats.wall,false);")
+s=s.replace('<button class="controlbtn" id="invBtn">INVENTORY</button><button class="controlbtn" id="craftBtn">CRAFT</button><button class="controlbtn" id="clueBtn">CLUES</button><button class="controlbtn danger" id="pulseBtn">PULSE</button>',
+'''<button class="controlbtn" id="interactBtn">INTERACT</button><button class="controlbtn" id="attackBtn">STRIKE</button><button class="controlbtn" id="invBtn">INVENTORY</button><button class="controlbtn" id="craftBtn">CRAFT</button><button class="controlbtn" id="clueBtn">CLUES</button><button class="controlbtn danger" id="pulseBtn">PULSE</button>''')
+s=s.replace("$('invBtn').onclick=showInventory;$('craftBtn').onclick=craft;$('clueBtn').onclick=showClues;$('pulseBtn').onclick=pulse;$('panelClose').onclick=()=>$('panel').classList.add('hide');",
+"$('interactBtn').onclick=interact;$('attackBtn').onclick=useItem;$('invBtn').onclick=showInventory;$('craftBtn').onclick=craft;$('clueBtn').onclick=showClues;$('pulseBtn').onclick=pulse;$('panelClose').onclick=()=>$('panel').classList.add('hide');")
+p.write_text(s, encoding="utf-8")
+print(f"Updated playable prototype: {p} ({p.stat().st_size:,} bytes)")
