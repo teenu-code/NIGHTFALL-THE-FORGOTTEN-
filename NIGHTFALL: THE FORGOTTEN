@@ -8,3 +8,5 @@ s=s.replace("$('invBtn').onclick=showInventory;$('craftBtn').onclick=craft;$('cl
 "$('interactBtn').onclick=interact;$('attackBtn').onclick=useItem;$('invBtn').onclick=showInventory;$('craftBtn').onclick=craft;$('clueBtn').onclick=showClues;$('pulseBtn').onclick=pulse;$('panelClose').onclick=()=>$('panel').classList.add('hide');")
 p.write_text(s, encoding="utf-8")
 print(f"Updated playable prototype: {p} ({p.stat().st_size:,} bytes)")
+/body
+/html
